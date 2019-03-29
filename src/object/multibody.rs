@@ -127,6 +127,11 @@ impl<N: Real> Multibody<N> {
         self.rbs.iter()
     }
 
+    /// Iterator through all the links of this multibody which are children of `id`.
+    pub fn child_links(&self, id: usize) -> impl Iterator<Item = &MultibodyLink<N>> {
+        self.rbs.iter().filter(move |rb| rb.parent_internal_id == id)
+    }
+
     /// The vector of damping applied to this multibody.
     #[inline]
     pub fn damping(&self) -> &DVector<N> {

@@ -127,6 +127,11 @@ impl<N: Real> MultibodyLink<N> {
     }
 }
 
+    /// The transform from local to parent
+    #[inline]
+    pub fn local_to_parent(&self) -> &Isometry<N> {
+        &self.local_to_parent
+    }
 
 impl<N: Real> BodyPart<N> for MultibodyLink<N> {
     #[inline]
